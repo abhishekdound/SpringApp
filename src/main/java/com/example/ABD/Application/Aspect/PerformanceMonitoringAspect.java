@@ -13,18 +13,18 @@ public class PerformanceMonitoringAspect {
 
     private static final Logger logger= LoggerFactory.getLogger(PerformanceMonitoringAspect.class);
 
-    @Around("execution(* *.com.example.ABD.Application.Service.PersonService.findAll(..))")
+    @Around("execution(* com.example.ABD.Application.Service.PersonService.findAll(..))")
     public Object performance(ProceedingJoinPoint pj) throws Throwable {
 
         long start=System.currentTimeMillis();
 
-        pj.proceed();
+        Object ob=pj.proceed();
 
         long end=System.currentTimeMillis();
 
         logger.info("Performance time is " + (start-end));
 
-        return pj;
+        return ob;
 
 
     }

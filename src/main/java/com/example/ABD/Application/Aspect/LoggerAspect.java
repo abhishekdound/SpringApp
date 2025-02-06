@@ -13,7 +13,7 @@ public class LoggerAspect {
 
     private static final Logger logger= LoggerFactory.getLogger(LoggerAspect.class);
 
-    @Before("execution(* *.com.example.ABD.Application.Service.PersonService.findAll(..))")
+    @Before("execution(* com.example.ABD.Application.Service.PersonService.findAll(..))")
     public void before(JoinPoint jp){
 
         logger.info(jp.getSignature().getName());
@@ -21,7 +21,7 @@ public class LoggerAspect {
 
     }
 
-    @After("execution(* *.com.example.ABD.Application.Service.PersonService.findAll(..))")
+    @After("execution(* com.example.ABD.Application.Service.PersonService.findAll(..))")
     public void after(JoinPoint jp){
 
         System.out.println(jp.getSignature().getName());
@@ -29,7 +29,7 @@ public class LoggerAspect {
 
     }
 
-    @AfterReturning("execution(* *.com.example.ABD.Application.Service.PersonService.findAll(..))")
+    @AfterReturning("execution(* com.example.ABD.Application.Service.PersonService.findAll(..))")
     public void afterReturning(JoinPoint jp){
 
         System.out.println(jp.getSignature().getName());
@@ -38,7 +38,7 @@ public class LoggerAspect {
     }
 
 
-    @AfterThrowing("execution(* *.com.example.ABD.Application.Service.PersonService.findAll(..))")
+    @AfterThrowing("execution(* com.example.ABD.Application.Service.PersonService.findAll(..))")
     public void afterThrowing(JoinPoint jp){
 
         System.out.println(jp.getSignature().getName());

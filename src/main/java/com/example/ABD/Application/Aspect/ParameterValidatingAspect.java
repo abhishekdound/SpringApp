@@ -14,7 +14,7 @@ public class ParameterValidatingAspect {
     private static final Logger logger= LoggerFactory.getLogger(ParameterValidatingAspect.class);
 
 
-    @Around("execution(* *.com.example.ABD.Application.Service.PersonService.findById(..))  && args(id)")
+    @Around("execution(* com.example.ABD.Application.Service.PersonService.findById(..))  && args(id)")
     public Object findById(ProceedingJoinPoint jp,int id) throws Throwable {
 
         if(id<0){
@@ -23,9 +23,8 @@ public class ParameterValidatingAspect {
 
         }
 
-        jp.proceed(new Object[]{id});
+        return jp.proceed(new Object[]{id});
 
-        return jp;
 
 
     }

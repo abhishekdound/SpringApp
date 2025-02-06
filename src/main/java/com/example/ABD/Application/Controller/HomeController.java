@@ -32,7 +32,7 @@ public class HomeController {
 
     }
 
-    @GetMapping("person/{name}")
+    @GetMapping("person/name/{name}")
     public List<Person> p2(@PathVariable("name") String name){
 
         return ps.findByName(name);
