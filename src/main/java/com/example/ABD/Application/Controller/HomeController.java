@@ -2,15 +2,25 @@ package com.example.ABD.Application.Controller;
 
 import com.example.ABD.Application.Model.Person;
 import com.example.ABD.Application.Model.User;
+import com.example.ABD.Application.Service.KeyService;
 import com.example.ABD.Application.Service.PersonService;
 import com.example.ABD.Application.Service.UserPassService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class HomeController {
+
+    @Autowired
+    private KeyService ks;
+
+    @Autowired
+    private AuthenticationManager am;
 
     @Autowired
     private PersonService ps;
@@ -72,6 +82,29 @@ public class HomeController {
         up.feef(user);
 
         return user;
+    }
+
+    @PutMapping("register")
+    public User set1(@RequestBody User user){
+
+        up.feef(user);
+
+        return user;
+    }
+
+    @PostMapping("login")
+    public String getKey(@RequestBody User user){
+
+        Authentication authentication=am.authenticate(new UsernamePasswordAuthenticationToken(user.getName(),user.getPassword()));
+
+        if(authentication.isAuthenticated()){
+
+            return ks.getKey(user.getName());
+
+        }
+
+        return "failure";
+
     }
 
 }

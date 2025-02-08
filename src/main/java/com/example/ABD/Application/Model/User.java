@@ -1,8 +1,6 @@
 package com.example.ABD.Application.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
